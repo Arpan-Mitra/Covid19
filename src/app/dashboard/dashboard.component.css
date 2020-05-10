@@ -1,0 +1,107 @@
+  .datetime{
+      text-align: center;
+      font-size: 20px;
+      color: gray;
+  }
+  .savelife p{
+        text-align: center;
+        font-size: 20px;
+        font-weight: 800;
+        color: gray;
+  }
+  .savelife label{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 800;
+    color: blueviolet;
+}
+
+  #summaryTable{
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+}
+  .summary table{
+    text-align: end;
+    width: 50%;
+    margin: 0px auto;
+    padding: 10;
+    word-spacing: normal;
+   
+}
+#summaryTable thead > tr{
+  text-align: center;
+  font-weight: 700;
+  line-height: 3em;
+}
+#summaryTable tbody > tr{
+  text-align: center;
+  font-size: x-large;
+  font-weight: 700;
+ 
+}
+
+#statewise{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  width: 50%;
+  margin: 0px auto;
+  padding: 10;
+  word-spacing: normal;
+}
+#statewise td {
+  border: 2px solid white;
+  border-radius: 8px;
+  padding: 5px;
+  color: gray;
+  font-size: medium;
+  line-break: normal;
+}
+#statewise tbody tr :hover{
+  background-color: rgba(219, 217, 217, 0.925);
+  cursor: pointer;
+}
+
+#statewise thead tr th {
+  border: 2px solid white;
+  border-radius: 8px;
+  padding: 5px;
+  position: sticky;
+  top: 7vh;
+}
+
+#statewise th {
+  text-align: left;
+  background-color: rgb(243, 243, 243);
+  
+}
+
+#districtwise{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  width: 650px;
+  /* border-collapse: collapse; */
+}
+#districtwise td {
+  border: 2px solid white;
+  border-radius: 8px;
+  padding: 5px;
+  color: gray;
+  font-size: medium;
+}
+#districtwise tbody tr :hover{
+  background-color: rgba(219, 217, 217, 0.925);
+  cursor: pointer;
+}
+
+#districtwise thead tr th {
+  border: 2px solid white;
+  border-radius: 8px;
+  padding: 5px;
+  position: sticky;
+  top : 0;
+  nav-down: root;
+}
+
+#districtwise th {
+  text-align: left;
+  background-color: rgb(243, 243, 243);
+  
+}

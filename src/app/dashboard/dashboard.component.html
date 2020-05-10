@@ -1,0 +1,98 @@
+<body>
+    <div class="savelife">
+        <p>Stay Home <label>Stay Safe</label></p>
+    </div>
+    <div class="datetime"> {{mydate | date:medium}}</div>
+    <div class="summary">
+        <table id="summaryTable" class="">
+            <thead>
+                <tr>
+                    <th style="color: rgb(238, 75, 16); text-align: center;" >Confirmed</th>
+                    <th style="color: rgb(99, 128, 214); text-align: center;">Active</th>
+                    <th style="color: rgb(4, 179, 4); text-align: center;" >Recovered</th>
+                    <th style="color: gray; text-align: center;">Deceased</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let t of total">
+                <tr >
+                    <td style="color: rgb(238, 75, 16);">{{t.confirmed}}<p *ngIf="t.deltaConfirmed!=0" style="font-size: small; color: rgb(238, 75, 16);">[+{{t.deltaConfirmed}}]</p></td>
+                    <td style="color: rgb(99, 128, 214);" >{{t.active}}<p></p></td>
+                    <td style="color: rgb(4, 179, 4);" >{{t.recovered}}<p *ngIf="t.deltaRecovered!=0" style="font-size: small; color: rgb(8, 158, 8);">[+{{t.deltaRecovered}}]</p></td>
+                    <td style="color: gray;">{{t.deceased}}<p *ngIf="t.deltaDeaths!=0" style="font-size: small; color: gray;">[+{{t.deltaDeaths}}]</p></td>
+                </tr>
+                <tr>
+                    <td style="font-size: small;text-align: end;" colspan=4>Last updated at:{{t.lastUpdated}}</td>
+                </tr>
+            </tbody>    
+        </table>
+    </div>
+    <div class="align-self-center">
+        <table class="" id="statewise">
+            <thead>
+                <tr>
+                <th style="color: white"></th>
+                <th style="color: gray;">State/UT</th>
+                <th style="color: gray;">Confirmed</th>
+                <th style="color: gray;">Active</th>
+                <th style="color: gray;">Recovered</th>
+                <th style="color: gray;">Deceased</th>
+            </tr>
+            </thead>
+            <tbody *ngFor="let state of statewiseTemp; let i = index" >
+                <tr *ngIf="i%2==0" style="background-color: rgb(229, 226, 226);" (click)="getStateDetails(state.name,i,state.statecode)" >
+                    <td style="font-size: small;"><strong>{{arrow[i]}}</strong></td>
+                    <td style="text-align: left;width: 300px;">{{state.name}}</td>
+                    <td style="text-align: right;"><strong *ngIf="state.deltaConfirmed!=0" style="font-size: small; color: rgb(238, 75, 16);">&uarr;{{state.deltaConfirmed}}&nbsp;</strong>{{state.confirmed}}</td>
+                    <td style="text-align: right;">{{state.active}}</td>
+                    <td style="text-align: right;" ><strong *ngIf="state.deltaRecovered!=0" style="font-size: small; color: green;">&uarr;{{state.deltaRecovered}}&nbsp;</strong>{{state.recover}}</td>
+                    <td style="text-align: right;"><strong *ngIf="state.deltaDeaths!=0" style="font-size: small; color: gray;">&uarr;{{state.deltaDeaths}}&nbsp;</strong>{{state.deceased}}</td> 
+                       
+                </tr>
+                <tr *ngIf="i%2==1" style="background-color: rgb(248, 245, 245);" (click)="getStateDetails(state.name,i,state.statecode)" >
+                    <td style="font-size: small;"><strong>{{arrow[i]}}</strong></td>
+                    <td style="text-align: left;">{{state.name}}</td>
+                    <td style="text-align: right; "><strong *ngIf="state.deltaConfirmed!=0" style="font-size: small; color: rgb(238, 75, 16);">&uarr;{{state.deltaConfirmed}}&nbsp;</strong>{{state.confirmed}}</td>
+                    <td style="text-align: right; ">{{state.active}}</td>
+                    <td style="text-align: right; " ><strong *ngIf="state.deltaRecovered!=0" style="font-size: small; color: green;">&uarr;{{state.deltaRecovered}}&nbsp;</strong>{{state.recover}}</td>
+                    <td style="text-align: right; "><strong *ngIf="state.deltaDeaths!=0" style="font-size: small; color: gray;">&uarr;{{state.deltaDeaths}}&nbsp;</strong>{{state.deceased}}</td>
+                </tr>
+                <tr *ngIf="stateno[i]==1">
+                <!-- <div class="state{{i}}" > -->
+                    <td></td>
+                    <td colspan="5">
+                    <table id="districtwise" class="">
+                        <thead>
+                            <tr>
+                            <th style="color: gray;">District</th>
+                            <th style="color: gray;">Confirmed</th>
+                            <th style="color: gray;">Active</th>
+                            <th style="color: gray;">Recovered</th>
+                            <th style="color: gray;">Deceased</th>
+                        </tr>
+                        </thead>
+                        <tbody *ngFor="let district of districtDataTemp; let i = index" >
+                            <tr *ngIf="i%2==0 && district.statecode==state.statecode" style="background-color: rgb(229, 226, 226);">
+                                <td style="text-align: left; width: 295px;">{{district.name}}</td>
+                                <td style="text-align: right;"><strong *ngIf="district.deltaConfirmed!=0" style="font-size: small; color: rgb(238, 75, 16);">&uarr;{{district.deltaConfirmed}}&nbsp;</strong>{{district.confirmed}}</td>
+                                <td style="text-align: right;">{{district.active}}</td>
+                                <td style="text-align: right;" ><strong *ngIf="district.deltaRecovered!=0" style="font-size: small; color: green;">&uarr;{{district.deltaRecovered}}&nbsp;</strong>{{district.recovered}}</td>
+                                <td style="text-align: right;"><strong *ngIf="district.deltaDeaths!=0" style="font-size: small; color: gray;">&uarr;{{district.deltaDeaths}}&nbsp;</strong>{{district.deceased}}</td>
+                            </tr>
+                            <tr *ngIf="i%2==1 && district.statecode==state.statecode" style="background-color: rgb(248, 245, 245);">
+                                <td style="text-align: left;">{{district.name}}</td>
+                                <td style="text-align: right; "><strong *ngIf="district.deltaConfirmed!=0" style="font-size: small; color: rgb(238, 75, 16);">&uarr;{{district.deltaConfirmed}}&nbsp;</strong>{{district.confirmed}}</td>
+                                <td style="text-align: right; ">{{district.active}}</td>
+                                <td style="text-align: right; " ><strong *ngIf="district.deltaRecovered!=0" style="font-size: small; color: green;">&uarr;{{district.deltaRecovered}}&nbsp;</strong>{{district.recovered}}</td>
+                                <td style="text-align: right; "><strong *ngIf="district.deltaDeaths!=0" style="font-size: small; color: gray;">&uarr;{{district.deltaDeaths}}&nbsp;</strong>{{district.deceased}}</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                    </td>
+                <!-- </div> -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</body>
