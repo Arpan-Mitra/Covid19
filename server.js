@@ -1,8 +1,8 @@
 const express = require('express');
 const path = require('path');
 const ngApp = express();
-ngApp.use(express.static('./dist/covid19-tracker'));
+ngApp.use(express.static('./dist/Covid19Tracker'));
 ngApp.get('/*', function (request, response) {
-    response.sendFile(path.join(__dirname, '/dist/covid19-tracker/index.html'));
+    response.sendFile(path.join(__dirname, '/dist/Covid19Tracker/index.html'));
 });
 ngApp.listen(process.env.PORT || 8000);
