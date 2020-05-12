@@ -69,6 +69,7 @@ table#statewise{
    padding: 0;
    word-spacing: normal;
    word-break: keep-all;
+   max-width: 400px;
    }
 
 #statewise{
@@ -111,7 +112,6 @@ table#statewise{
 #districtwise{
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   width: 100%;
-  table-layout: fixed;
   max-width: 500px;
 }
 #districtwise td {
@@ -131,6 +131,7 @@ table#statewise{
   border-radius: 8px;
   padding: 5px;
   position: static;
+  text-align: center;
 }
 
 #districtwise th {

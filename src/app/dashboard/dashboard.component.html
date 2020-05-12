@@ -59,7 +59,7 @@
                 <tr *ngIf="stateno[i]==1">
                 <!-- <div class="state{{i}}" > -->
                     <td colspan="6">
-                    <table id="districtwise" class="table table-condensed w-auto">
+                    <table id="districtwise" class="table w-auto">
                         <thead>
                             <tr>
                             <th style="color: gray;">District</th>
@@ -80,7 +80,7 @@
                             <tr *ngIf="i%2==1 && district.statecode==state.statecode" style="background-color: rgb(248, 245, 245);">
                                 <td style="text-align: left;">{{district.name}}</td>
                                 <td style="text-align: right; "><strong *ngIf="district.deltaConfirmed!=0" style="font-size: small; color: rgb(238, 75, 16);">&uarr;{{district.deltaConfirmed}}&nbsp;</strong>{{district.confirmed}}</td>
-                                <td style="text-align: right; ">{{district.active}}</td>
+                                <td style="text-align: right; width: 30px; ">{{district.active}}</td>
                                 <td style="text-align: right; " ><strong *ngIf="district.deltaRecovered!=0" style="font-size: small; color: green;">&uarr;{{district.deltaRecovered}}&nbsp;</strong>{{district.recovered}}</td>
                                 <td style="text-align: right; "><strong *ngIf="district.deltaDeaths!=0" style="font-size: small; color: gray;">&uarr;{{district.deltaDeaths}}&nbsp;</strong>{{district.deceased}}</td>
                             </tr>
