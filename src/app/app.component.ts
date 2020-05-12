@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { $ } from 'protractor';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,10 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'Covid19Tracker';
   signature : string = 'Creator:- @Arpan Mitra';
-  constructor(){
+  constructor(private router :Router){
     //navigator.onLine ? console.log('Online') : router.navigateByUrl('/error');
       }
+      ngOnInit(){
+     
+}
 }

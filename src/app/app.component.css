@@ -1,41 +1,22 @@
-p {
-    color : gray;
-    font-size:25px;
-    text-align: center;
-    font-weight: bold;
-    border: black;
-    font-family: sans-serif;
-}
-label{
-    color: rgb(146, 130, 233);
-
-}
-div.sticky{
-    position:sticky;
-    top:0;
-    z-index: 100; 
-    background-color: rgb(255, 255, 255);
-}
-nav {
-    position: sticky;
-    top :6vh;
-    /* background: transparent; */
-}
-
-nav a {
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 4px;
-  }
-  button#navbutton{
-    /* background:  white; */
-    height: 5vh;
-}
-img{
+img {
     height: 40px;
     width: 40px;
 }
-#myNavbar .select :hover{
-
-    background-color: rgb(190, 186, 186);
+div.sticky
+{   min-width: 450px;
+    position:sticky;
+    top:0;
+    z-index: 100;
+    text-align: center;
+    background-color: white;
+}
+#navbar{
+    min-width: 450px;
+    position: sticky;
+    top : 6vh;
+    border: 0;
+}
+button{
+    background-color: transparent;
+    height: 5vh;
 }

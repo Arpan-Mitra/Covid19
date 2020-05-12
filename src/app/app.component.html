@@ -1,24 +1,26 @@
-<div class="sticky"><header >
-  <p>COVID19 <label>INDIA</label></p>
-</header></div>
-<nav id="navbar" class="navbar navbar-inverse sticky" >
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a style="cursor: pointer;">
-        <img src="../assets/image.jpg" data-toggle="collapse" data-target="#myNavbar">                       
-      </a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">     
-        <!-- <li class="active"><a href="#">Home</a></li> -->
-      <ul class="nav navbar-nav ">
-          <li class="select"><a [routerLink]='["/dashboard"]' routerLinkActive="active">Dashboard</a></li>
-          <li class="select"><a [routerLink]='["/map"]' >Map</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<div class="container-fluid">
-<router-outlet></router-outlet>
+<div class="sticky">
+  <label  style=" font-size: x-large;  position: sticky;color: gray; ">INDIA<span style="color: cornflowerblue;">COVID-19</span></label>
 </div>
-<div class="container-fluid" style="text-align: right; color: gray;bottom: 0;">
-<label>{{signature}}</label></div>
+  <nav id="navbar" class="navbar navbar-inverse sticky" >
+    <div class="container-fluid">
+       <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+      </div> 
+      <div class="collapse navbar-collapse" id="myNavbar">     
+        <ul class="nav navbar-nav">
+            <li class="select"><a [routerLink]='["/dashboard"]' routerLinkActive="active">Dashboard</a></li>
+            <li class="select"><a [routerLink]='["/map"]' >Map</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>
+<div class="container-fluid" style="text-align: right; color: gray;bottom: 0;right: 0;min-width: 440px;">
+  <label style="color: blueviolet;">{{signature}}</label>
+</div>
