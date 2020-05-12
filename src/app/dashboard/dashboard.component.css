@@ -113,13 +113,14 @@ table#statewise{
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   width: 100%;
   max-width: 480px;
+  table-layout: auto;
 }
 #districtwise td {
   border: 2px solid white;
   border-radius: 8px;
   padding: 5px;
   color: gray;
-  font-size: medium;
+  font-size: small;
 }
 #districtwise tbody tr td:hover{
   background-color: rgba(219, 217, 217, 0.925);
