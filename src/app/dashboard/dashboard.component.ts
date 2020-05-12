@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
                       ">",">",">",">",">",">",">",">",">",">",">",">",">",">",">",">",">",">",">"];
   data ;
   statedata;
+  zonewisedata;
   stateName : String;
   updatedConfirm : number = 0;
   stateDistrictData : Array<{name :string, confirmed:number, active:number, recover:number, deceased:number}> = [];
@@ -30,10 +31,12 @@ export class DashboardComponent implements OnInit {
    statewiseTemp : Array<{name :string, confirmed:number, active:number, recover:number, deceased:number,
     deltaConfirmed:number, deltaDeaths: number, deltaRecovered : number, lastUpdated : string, statenotes: string,statecode:string}> = [];
    districtDataTemp : Array<{name:string, confirmed:number, active:number, recovered:number, deceased:number,
-      deltaConfirmed:number, deltaDeaths: number, deltaRecovered : number,statecode : string}> = []; 
+      deltaConfirmed:number, deltaDeaths: number, deltaRecovered : number,statecode : string,zone :string}> = []; 
+    zonewiseTemp: Array<{district: string,state: string, statecode:string,zone : string}>=[];
   constructor(private service : GetdataService) { 
     this.getAllData();
     this.getStateWiseData();
+    this.getZonewiseData();
   }
 
   ngOnInit() {
@@ -77,9 +80,26 @@ export class DashboardComponent implements OnInit {
            
     } ).catch();
   }
+  getZonewiseData(){
+    this.service.getZonewiseData()
+    .then(res =>{
+      this.zonewisedata = res;
+           
+    } ).catch();
+  }
   getStateDetails(name,count,statecode){
-    
-    console.log(this.districtDataTemp.length);
+
+
+    for (var i=0;i<this.zonewisedata.zones.length;i++){
+        this.zonewiseTemp.push({
+          district:this.zonewisedata.zones[i].district ,
+          state : this.zonewisedata.zones[i].state, 
+          statecode :this.zonewisedata.zones[i].statecode,
+          zone:this.zonewisedata.zones[i].zone
+        });
+  
+    }
+
     var flag :Boolean =false;
       for(var t=0;t<this.districtDataTemp.length;t++){
         if(this.districtDataTemp[t].statecode == statecode){
@@ -97,10 +117,22 @@ export class DashboardComponent implements OnInit {
           deltaConfirmed:this.statedata[name].districtData[district].delta.confirmed,
           deltaDeaths: this.statedata[name].districtData[district].delta.deceased,
           deltaRecovered : this.statedata[name].districtData[district].delta.recovered,
-          statecode :this.statedata[name].statecode
+          statecode :this.statedata[name].statecode,
+          zone : ""
           });
       }
     }
+
+    for (var i=0;i<this.zonewisedata.zones.length;i++){
+      for(var j=0;j< this.districtDataTemp.length;j++){
+        if(this.zonewisedata.zones[i].district == this.districtDataTemp[j].name ){
+          this.districtDataTemp[j].zone =this.zonewisedata.zones[i].zone;
+        }
+      }
+    }
+    console.log(this.districtDataTemp);
+
+
     for (var j=0;j<37;j++){
       if(j==count){
         if(this.arrow[j]==">"){

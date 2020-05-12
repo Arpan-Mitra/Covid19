@@ -69,16 +69,22 @@
                             <th style="color: gray;">Deceased</th>
                         </tr>
                         </thead>
-                        <tbody *ngFor="let district of districtDataTemp; let i = index" >
+                        <tbody *ngFor="let district of districtDataTemp; let i = index; let zone in " >
                             <tr *ngIf="i%2==0 && district.statecode==state.statecode" style="background-color: rgb(229, 226, 226);">
-                                <td style="text-align: left;">{{district.name}}</td>
+                                <td *ngIf="district.zone == 'Red'" style="text-align: left;background-color: rgb(255, 185, 185);color: rgb(241, 68, 68);"><b>{{district.name}}</b></td>
+                                <td *ngIf="district.zone == 'Orange'" style="text-align: left;background-color: rgb(250, 211, 174);color: rgb(252, 173, 26);"><b>{{district.name}}</b></td>
+                                <td *ngIf="district.zone == 'Green'" style="text-align: left;background-color: rgb(198, 252, 201); color:rgb(64, 172, 64)"><b>{{district.name}}</b></td>
+                                <td *ngIf="district.zone == ''" style="text-align: left;"><b>{{district.name}}</b></td>
                                 <td style="text-align: right;"><strong *ngIf="district.deltaConfirmed!=0" style="font-size: small; color: rgb(238, 75, 16);">&uarr;{{district.deltaConfirmed}}&nbsp;</strong>{{district.confirmed}}</td>
                                 <td style="text-align: right;">{{district.active}}</td>
                                 <td style="text-align: right;" ><strong *ngIf="district.deltaRecovered!=0" style="font-size: small; color: green;">&uarr;{{district.deltaRecovered}}&nbsp;</strong>{{district.recovered}}</td>
                                 <td style="text-align: right;"><strong *ngIf="district.deltaDeaths!=0" style="font-size: small; color: gray;">&uarr;{{district.deltaDeaths}}&nbsp;</strong>{{district.deceased}}</td>
                             </tr>
                             <tr *ngIf="i%2==1 && district.statecode==state.statecode" style="background-color: rgb(248, 245, 245);">
-                                <td style="text-align: left;">{{district.name}}</td>
+                                <td *ngIf="district.zone == 'Red'" style="text-align: left;background-color: rgb(255, 185, 185);color: rgb(241, 68, 68);"><b>{{district.name}}</b></td>
+                                <td *ngIf="district.zone == 'Orange'" style="text-align: left;background-color: rgb(252, 211, 174);color: rgb(252, 173, 26);"><b>{{district.name}}</b></td>
+                                <td *ngIf="district.zone == 'Green'" style="text-align: left;background-color: rgb(198, 252, 201);color:rgb(64, 172, 64)"><b>{{district.name}}</b></td>
+                                <td *ngIf="district.zone == ''" style="text-align: left;"><b>{{district.name}}</b></td>
                                 <td style="text-align: right; "><strong *ngIf="district.deltaConfirmed!=0" style="font-size: small; color: rgb(238, 75, 16);">&uarr;{{district.deltaConfirmed}}&nbsp;</strong>{{district.confirmed}}</td>
                                 <td style="text-align: right; width: 30px; ">{{district.active}}</td>
                                 <td style="text-align: right; " ><strong *ngIf="district.deltaRecovered!=0" style="font-size: small; color: green;">&uarr;{{district.deltaRecovered}}&nbsp;</strong>{{district.recovered}}</td>

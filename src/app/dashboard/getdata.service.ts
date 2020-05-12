@@ -24,6 +24,14 @@ export class GetdataService {
     })
     .catch(this.errorHandler);
   }
+  getZonewiseData() :Promise<any>{
+    return this.http.get('https://api.covid19india.org/zones.json')
+    .toPromise()
+    .then((response)=>{
+      return response;
+    })
+    .catch(this.errorHandler);
+  }
 
  private errorHandler(error:any):Promise<any> {
   console.error("Error occured",error);    
