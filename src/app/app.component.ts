@@ -14,6 +14,8 @@ export class AppComponent {
     //navigator.onLine ? console.log('Online') : router.navigateByUrl('/error');
       }
       ngOnInit(){
-     
+        // $('.navbar-collapse li a').click(function(){
+        //   (<any>$(".navbar-collapse")).collapse('hide');
+        // }
 }
 }
